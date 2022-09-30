@@ -43,8 +43,8 @@ public class ScheduledTasks {
 	// @Scheduled(cron = "0 30 11 ? * 5 ", zone = TIME_ZONE) // a tarea anterior se
 	// ejecutará a las 23 horas con 9 minutos
 
-	private static final String cronExpressionWms = "0 08 19 ? * 4 ";
-	private static final String cronExpressionPmm = "0 17 19 ? * 4 ";
+	private static final String cronExpressionWms = "0 30 0,3,6,9,12,18 ? * * ";
+	private static final String cronExpressionPmm = "0 30 0,3,6,9,12,18 ? * * ";
 	
 //	private static final String cronExpressionWms = "0 02 10 ? * 2 ";
 //	private static final String cronExpressionPmm = "0 12 10 ? * 2 ";
@@ -123,48 +123,6 @@ public class ScheduledTasks {
 			this.tblPmmService.saveTblPmm(listaTblPmmForm,  id);
 		}
 	}
-
-	/*
-	 * for (Fapinvbalee obj : listaTblPmmForm) {
-	 * 
-	 * tblPmm = new TblPmm();
-	 * 
-	 * tblPmm.setCurrCode(obj.getCurrCode());
-	 * tblPmm.setFirstPisDate(obj.getFirstPisDate());
-	 * tblPmm.setFirstSalesDate(obj.getFirstSalesDate());
-	 * tblPmm.setFirstShippedDate(obj.getFirstShippedDate());
-	 * 
-	 * <<<<<<< HEAD
-	 * 
-	 * // A B C D E F /* A: Segundos (0 - 59). B: Minutos (0 - 59). C: Horas (0 -
-	 * 23). D: Día (1 - 31). E: Mes (1 - 12). F: Día de la semana (0 - 6).
-	 */
-
-	/*
-	 * @Scheduled(fixedDelay = 2000) public void scheduleTaskWithFixedDelay() {
-	 * logger.info("Fixed Delay Task :: Execution Time - {}",
-	 * dateTimeFormatter.format(LocalDateTime.now())); try {
-	 * TimeUnit.SECONDS.sleep(5); logger.info(".:::maestro hever:::."); } catch
-	 * (InterruptedException ex) { logger.error("Ran into an error {}", ex); throw
-	 * new IllegalStateException(ex); } }
-	 * 
-	 */
-	/*
-	 * @Scheduled(fixedRate = 2000, initialDelay = 5000) public void
-	 * scheduleTaskWithInitialDelay() {
-	 * logger.info("Fixed Rate Task with Initial Delay :: Execution Time - {}",
-	 * dateTimeFormatter.format(LocalDateTime.now())); }
-	 * 
-	 * @Scheduled(cron = "0 * * * * ?") public void scheduleTaskWithCronExpression()
-	 * { logger.info("Cron Task :: Execution Time - {}",
-	 * dateTimeFormatter.format(LocalDateTime.now())); }
-	 */
-
-	// A B C D E F
-	/*
-	 * A: Segundos (0 - 59). B: Minutos (0 - 59). C: Horas (0 - 23). D: Día (1 -
-	 * 31). E: Mes (1 - 12). F: Día de la semana (0 - 6).
-	 */
 
 	// @Scheduled(cron = "0 30 11 ? * 5 ", zone = TIME_ZONE) // a tarea anterior se
 	// ejecutará a las 23 horas con 9 minutos
