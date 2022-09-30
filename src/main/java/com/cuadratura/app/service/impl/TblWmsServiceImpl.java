@@ -36,33 +36,33 @@ public class TblWmsServiceImpl extends GenericServiceImpl<TblWms, Integer> imple
 			statement = new WmsCinsDto();
 			// item_part_a,
 			statement.setNroCarga(obj.getNroCarga());
-			statement.setCreateDate(obj.getCreateDate().trim());
-			statement.setFacilityCode(obj.getFacilityCode().trim());
-			statement.setCompanyCode(obj.getCompanyCode().trim());
-			statement.setItemAlternate(obj.getItemAlternate().trim());
-			statement.setItemPartA(obj.getItemPartA().trim());
+			statement.setCreateDate(obj.getCreateDate()== null ? null: obj.getCreateDate().trim());
+			statement.setFacilityCode(obj.getFacilityCode()== null ? null: obj.getFacilityCode().trim());
+			statement.setCompanyCode( obj.getCompanyCode()== null ? null: obj.getCompanyCode().trim());
+			statement.setItemAlternate( obj.getItemAlternate()== null ? null: obj.getItemAlternate().trim());
+			statement.setItemPartA(obj.getItemPartA()== null ? null: obj.getItemPartA().trim());
 
 			// item_part_b, item_part_c, item_part_d, item_part_e, item_part_f,
 			// hierarchy1_code,
-			statement.setItemPartB(obj.getItemPartB().trim());
-			statement.setItemPartC(obj.getItemPartC().trim());
-			statement.setItemPartD(obj.getItemPartD().trim());
-			statement.setItemPartE(obj.getItemPartE().trim());
-			statement.setItemPartF(obj.getItemPartF().trim());
-			statement.setHierarchy1Code(obj.getHierarchy1Code().trim());
+			statement.setItemPartB( obj.getItemPartB() == null ? null:  obj.getItemPartB().trim());
+			statement.setItemPartC( obj.getItemPartC()== null ? null: obj.getItemPartC().trim());
+			statement.setItemPartD(obj.getItemPartD()== null ? null: obj.getItemPartD().trim());
+			statement.setItemPartE( obj.getItemPartE()== null ? null: obj.getItemPartE().trim());
+			statement.setItemPartF( obj.getItemPartF()== null ? null: obj.getItemPartF().trim());
+			statement.setHierarchy1Code(obj.getHierarchy1Code()== null ? null: obj.getHierarchy1Code().trim());
 
 			// hierarchy2_code, hierarchy3_code, hierarchy4_code, hierarchy5_code,
 			// batch_nbr,
-			statement.setHierarchy2Code(obj.getHierarchy2Code().trim());
-			statement.setHierarchy3Code(obj.getHierarchy3Code().trim());
-			statement.setHierarchy4Code(obj.getHierarchy4Code().trim());
-			statement.setHierarchy5Code(obj.getHierarchy5Code().trim());
-			statement.setBatchNbr(obj.getBatchNbr().trim());
+			statement.setHierarchy2Code(obj.getHierarchy2Code()== null ? null: obj.getHierarchy2Code().trim());
+			statement.setHierarchy3Code( obj.getHierarchy3Code()== null ? null: obj.getHierarchy3Code().trim());
+			statement.setHierarchy4Code(obj.getHierarchy4Code()== null ? null: obj.getHierarchy4Code().trim());
+			statement.setHierarchy5Code( obj.getHierarchy5Code()== null ? null: obj.getHierarchy5Code().trim());
+			statement.setBatchNbr( obj.getBatchNbr()== null ? null: obj.getBatchNbr().trim());
 
 			// pre_pack_code, tbl_wmscol, pre_pack_ratio, pre_pack_units, oblpn_total,
 			// active_total,
-			statement.setPrePackCode(obj.getPrePackCode().trim());
-			statement.setTblWmscol(obj.getTblWmscol().trim());
+			statement.setPrePackCode(obj.getPrePackCode()== null ? null: obj.getPrePackCode().trim());
+			statement.setTblWmscol(obj.getTblWmscol()== null ? null: obj.getTblWmscol().trim());
 			statement.setPrePackRatio(obj.getPrePackRatio());
 			statement.setPrePackUnits(obj.getPrePackUnits());
 			statement.setOblpnTotal(obj.getOblpnTotal());
@@ -95,31 +95,31 @@ public class TblWmsServiceImpl extends GenericServiceImpl<TblWms, Integer> imple
 
 			// lock_code_1, lock_code_qty_1, lock_code_2, lock_code_qty_2, lock_code_3,
 			// lock_code_qty_3, lock_code_4,
-			statement.setLockCode1(obj.getLockCode1().trim());
+			statement.setLockCode1(obj.getLockCode1()== null ? null: obj.getLockCode1().trim());
 			statement.setLockCodeQty1(obj.getLockCodeQty1());
-			statement.setLockCode2(obj.getLockCode2().trim());
+			statement.setLockCode2( obj.getLockCode2()== null ? null: obj.getLockCode2().trim());
 			statement.setLockCodeQty2(obj.getLockCodeQty2());
-			statement.setLockCode3(obj.getLockCode3().trim());
+			statement.setLockCode3( obj.getLockCode3()== null ? null: obj.getLockCode3().trim());
 			statement.setLockCodeQty3(obj.getLockCodeQty3());
-			statement.setLockCode4(obj.getLockCode4().trim());
+			statement.setLockCode4( obj.getLockCode4()== null ? null: obj.getLockCode4().trim());
 
 			// lock_code_qty_4, lock_code_5, lock_code_qty_5, lock_code_6, lock_code_qty_6,
 			// lock_code_7, lock_code_qty_7,
 			statement.setLockCodeQty4(obj.getLockCodeQty4());
-			statement.setLockCode5(obj.getLockCode5().trim());
+			statement.setLockCode5( obj.getLockCode5()== null ? null: obj.getLockCode5().trim());
 			statement.setLockCodeQty5(obj.getLockCodeQty5());
-			statement.setLockCode6(obj.getLockCode6().trim());
+			statement.setLockCode6( obj.getLockCode6()== null ? null: obj.getLockCode6().trim());
 			statement.setLockCodeQty6(obj.getLockCodeQty6());
-			statement.setLockCode7(obj.getLockCode7().trim());
+			statement.setLockCode7(obj.getLockCode7()== null ? null: obj.getLockCode7().trim());
 			statement.setLockCodeQty7(obj.getLockCodeQty7());
 
 			// lock_code_8, lock_code_qty_8, lock_code_9, lock_code_qty_9, lock_code_10,
 			// lock_code_qty_10, download_date1,
-			statement.setLockCode8(obj.getLockCode8().trim());
+			statement.setLockCode8( obj.getLockCode8()== null ? null: obj.getLockCode8().trim());
 			statement.setLockCodeQty8(obj.getLockCodeQty8());
-			statement.setLockCode9(obj.getLockCode9().trim());
+			statement.setLockCode9( obj.getLockCode9()== null ? null: obj.getLockCode9().trim());
 			statement.setLockCodeQty9(obj.getLockCodeQty9());
-			statement.setLockCode10(obj.getLockCode10().trim());
+			statement.setLockCode10(obj.getLockCode10()== null ? null: obj.getLockCode10().trim());
 			statement.setLockCodeQty10(obj.getLockCodeQty10());
 
 			if (obj.getDownloadDate1() != null) {
@@ -134,7 +134,7 @@ public class TblWmsServiceImpl extends GenericServiceImpl<TblWms, Integer> imple
 			 * 
 			 */
 			statement.setErrorCode(obj.getErrorCode());
-			statement.setObservacionError(obj.getObservacionError().trim());
+			statement.setObservacionError(obj.getObservacionError()== null ? null: obj.getObservacionError().trim());
 
 			if (obj.getFlgTipo() != null) {
 				statement.setFlgTipo(obj.getFlgTipo().intValue());

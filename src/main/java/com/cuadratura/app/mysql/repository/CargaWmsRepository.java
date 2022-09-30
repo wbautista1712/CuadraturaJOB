@@ -1,13 +1,10 @@
 package com.cuadratura.app.mysql.repository;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.cuadratura.app.mysql.entity.CargaWms;
-import com.cuadratura.app.oracle.dto.FotoWmsDto;
 
 @Repository
 public interface CargaWmsRepository extends CrudRepository<CargaWms, Integer>, CargaWmsRepositoryCustom {

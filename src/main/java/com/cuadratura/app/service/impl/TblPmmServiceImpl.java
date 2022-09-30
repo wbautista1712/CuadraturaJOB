@@ -41,8 +41,8 @@ public class TblPmmServiceImpl extends GenericServiceImpl<TblPmm, Integer> imple
 			// org_lvl_child, prd_lvl_child, inv_type_code, trans_lote, on_hand_qty,
 			id.setOrgLvlChild(obj.getFapinvbaleePK().getOrgLvlChild());
 			id.setPrdLvlChild((obj.getFapinvbaleePK().getPrdLvlChild()));
-			id.setInvTypeCode(obj.getFapinvbaleePK().getInvTypeCode().trim());
-			id.setTransLote(obj.getFapinvbaleePK().getTransLote().trim());
+			id.setInvTypeCode(obj.getFapinvbaleePK().getInvTypeCode()== null ? null : obj.getFapinvbaleePK().getInvTypeCode().trim());
+			id.setTransLote(obj.getFapinvbaleePK().getTransLote()== null ? null : obj.getFapinvbaleePK().getTransLote().trim());
 
 			statement.setFapinvbaleePK(id);
 			statement.setOnHandQty(obj.getOnHandQty() == null ? BigDecimal.ZERO : obj.getOnHandQty());
@@ -97,7 +97,7 @@ public class TblPmmServiceImpl extends GenericServiceImpl<TblPmm, Integer> imple
 			statement.setOnHandWeight(obj.getOnHandWeight());
 
 			// weight_uom, po_ord_weight, po_intrn_weight, to_ord_weight, to_intrn_weight,
-			statement.setWeightUom(obj.getWeightUom().trim());
+			statement.setWeightUom( obj.getWeightUom()== null ? null : obj.getWeightUom().trim());
 			statement.setPoOrdWeight(obj.getPoOrdWeight());
 			statement.setPoIntrnWeight(obj.getPoIntrnWeight());
 			statement.setToOrdWeight(obj.getToOrdWeight());
@@ -106,8 +106,8 @@ public class TblPmmServiceImpl extends GenericServiceImpl<TblPmm, Integer> imple
 			// ltd_weight, prd_sll_uom, curr_code, on_hand_eaches, first_shipped_date,
 			// first_sales_date,
 			statement.setLtdWeight(obj.getLtdWeight());
-			statement.setPrdSllUom(obj.getPrdSllUom().trim());
-			statement.setCurrCode(obj.getCurrCode().trim());
+			statement.setPrdSllUom(obj.getPrdSllUom()== null ? null : obj.getPrdSllUom().trim());
+			statement.setCurrCode(obj.getCurrCode()== null ? null : obj.getCurrCode().trim());
 			statement.setOnHandEaches(obj.getOnHandEaches());
 
 			if (obj.getFirstShippedDate() != null) {

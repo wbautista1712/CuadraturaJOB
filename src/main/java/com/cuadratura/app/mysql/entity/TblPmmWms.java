@@ -13,8 +13,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -94,8 +92,12 @@ public class TblPmmWms implements Serializable {
     @Basic(optional = false)
     @Column(name = "estado")
     private boolean estado;
+    
+    @Column(name = "idUsuario")
     private Integer idUsuario;
-    private CrucePmmWms idCrucepmmwms;
+    
+    @Column(name = "idCruce_pmm_wms")
+    private Integer idCrucepmmwms;
 
  
 }
