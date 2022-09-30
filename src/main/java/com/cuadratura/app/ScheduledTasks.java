@@ -40,14 +40,15 @@ public class ScheduledTasks {
 
 	// Agregado por wilber
 
-	// @Scheduled(cron = "0 30 11 ? * 5 ", zone = TIME_ZONE) // a tarea anterior se
-	// ejecutará a las 23 horas con 9 minutos
 
-	private static final String cronExpressionWms = "0 30 0,3,6,9,12,18 ? * * ";
-	private static final String cronExpressionPmm = "0 30 0,3,6,9,12,18 ? * * ";
+
+	//produccion
+	//private static final String cronExpressionWms = "0 30 0,3,6,9,12,18 ? * * ";
+	//private static final String cronExpressionPmm = "0 30 0,3,6,9,12,18 ? * * ";
 	
-//	private static final String cronExpressionWms = "0 02 10 ? * 2 ";
-//	private static final String cronExpressionPmm = "0 12 10 ? * 2 ";
+	//local
+	private static final String cronExpressionWms = "0 02 10 ? * 4 ";
+	private static final String cronExpressionPmm = "0 12 10 ? * 4 ";
 
 
 	private static final String TIME_ZONE = "America/Lima";
@@ -87,7 +88,6 @@ public class ScheduledTasks {
 	}
 
 	@Scheduled(cron = cronExpressionPmm, zone = TIME_ZONE)
-	//@Scheduled(cron = "#{@getCronValue}", zone = TIME_ZONE)
 	public void scheduleTaskWithFixedRate() throws SQLException {
 		logger.info("Fixed Rate Task :: Execution Time - {}", dateTimeFormatter.format(LocalDateTime.now()));
 
@@ -124,15 +124,14 @@ public class ScheduledTasks {
 		}
 	}
 
-	// @Scheduled(cron = "0 30 11 ? * 5 ", zone = TIME_ZONE) // a tarea anterior se
-	// ejecutará a las 23 horas con 9 minutos
+	
 	@Scheduled(cron = cronExpressionWms, zone = TIME_ZONE) 
-//	@Scheduled(fixedDelay = 2000) 
 	public void scheduleTaskWithCronExpression() throws Exception {
 
 		logger.info("Cron Task :: Execution Time - {}", dateTimeFormatter.format(LocalDateTime.now()));
 
-		List<WmsCinsCDDto> listaCDxFH = wmsCinsService.getCDXFechaHoraFotoWms();
+		//List<WmsCinsCDDto> listaCDxFH = wmsCinsService.getCDXFechaHoraFotoWms();
+		List<WmsCinsCDDto> listaCDxFH = wmsCinsService.getCDXNroCargaFotoWms();
 		logger.info(".:::oracle  tamaño lote listaCDxFH :::. " + listaCDxFH.size());
 
 		for (int i = 0; i < listaCDxFH.size(); i++) {
@@ -141,8 +140,8 @@ public class ScheduledTasks {
 			logger.info(".::: insert idCD:::. " + listaCDxFH.get(i).getIdCD());
 
 			logger.info(".:::oracle  listaFH.get(j).getFechaHora() :::. " + listaCDxFH.get(i).getFechaHora());
-
-			List<WmsCinsDto> listaTblWmsForm = this.wmsCinsService.findAllWMSWmsCins(listaCDxFH.get(i).getFechaHora());
+		//	List<WmsCinsDto> listaTblWmsForm = this.wmsCinsService.findAllWMSWmsCins(listaCDxFH.get(i).getFechaHora());
+			List<WmsCinsDto> listaTblWmsForm = this.wmsCinsService.findAllxNroCargaWMSWmsCins(listaCDxFH.get(i).getNroCarga());
 			// TblPmm tblPmm = null;
 			logger.info(".::: oracle tamaño WMS de importacion :::. " + listaTblWmsForm.size());
 

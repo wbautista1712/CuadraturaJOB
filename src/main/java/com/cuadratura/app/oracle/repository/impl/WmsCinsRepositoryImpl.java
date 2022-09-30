@@ -122,5 +122,18 @@ public class WmsCinsRepositoryImpl implements WmsCinsRepository {
 		query.setHint(QueryHints.HINT_CACHEABLE, true);
 		return query.getResultList();
 	}
+	
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Object[]> getCDXNroCargaFotoWms() {
+		String sql = "             SELECT DISTINCT FACILITY_CODE idcd, nro_carga  FROM INTEGRACION.WMS_CINS "
+				+ "				WHERE FACILITY_CODE IN ('CD04', 'CD06', 'CD11', 'CD12', 'CD15')   AND "
+				+ "(SUBSTR(CREATE_DATE,1,4)||'-'||SUBSTR(CREATE_DATE,5,2)||'-'||SUBSTR(CREATE_DATE,7,2))= TO_CHAR(SYSDATE, 'YYYY-MM-DD') ORDER BY 1";
+
+		Query query = this.entityManager.createNativeQuery(sql);
+		query.setHint(QueryHints.HINT_CACHEABLE, true);
+		return query.getResultList();
+	}
 
 }

@@ -18,4 +18,6 @@ public interface WmsCinsService {
 	public List<WmsCinsCDDto> getNroCargaFotoWms(String idCD);
 	
 	List<WmsCinsDto> findAllxNroCargaWMSWmsCins(Integer nroCarga) throws Exception;
+	
+	public List<WmsCinsCDDto> getCDXNroCargaFotoWms();
 }

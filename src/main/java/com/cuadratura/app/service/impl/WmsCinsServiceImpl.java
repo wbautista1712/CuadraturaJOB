@@ -318,5 +318,21 @@ public class WmsCinsServiceImpl implements WmsCinsService {
 		}
 		return listReturn;
 	}
+	
+	@Override
+	public List<WmsCinsCDDto> getCDXNroCargaFotoWms() {
+		List<Object[]> listObject = wmsCinsRepository.getCDXNroCargaFotoWms();
+		WmsCinsCDDto comboDTO;
+		List<WmsCinsCDDto> listReturn = new ArrayList<WmsCinsCDDto>();
+		for (Object[] row : listObject) {
+			LOGGER.info("cast tamaño fecha hora ");
+			comboDTO = new WmsCinsCDDto();
+			comboDTO.setIdCD(row[0]== null ? "": row[0].toString()  );
+			comboDTO.setFechaHora( row[1]== null ? "" :row[1].toString()  );
+		
+			listReturn.add(comboDTO);
+		}
+		return listReturn;
+	}
 
 }
