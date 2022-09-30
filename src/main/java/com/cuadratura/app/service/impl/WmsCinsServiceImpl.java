@@ -328,7 +328,7 @@ public class WmsCinsServiceImpl implements WmsCinsService {
 			LOGGER.info("cast tamaño fecha hora ");
 			comboDTO = new WmsCinsCDDto();
 			comboDTO.setIdCD(row[0]== null ? "": row[0].toString()  );
-			comboDTO.setFechaHora( row[1]== null ? "" :row[1].toString()  );
+			comboDTO.setNroCarga( row[1]== null ? 0 :Integer.parseInt(row[1].toString()));
 		
 			listReturn.add(comboDTO);
 		}

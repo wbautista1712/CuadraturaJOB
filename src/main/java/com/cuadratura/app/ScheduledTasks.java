@@ -40,15 +40,13 @@ public class ScheduledTasks {
 
 	// Agregado por wilber
 
-
-
 	//produccion
-	//private static final String cronExpressionWms = "0 30 0,3,6,9,12,18 ? * * ";
-	//private static final String cronExpressionPmm = "0 30 0,3,6,9,12,18 ? * * ";
+	private static final String cronExpressionWms = "0 30 0,3,6,9,12,18 ? * * ";
+	private static final String cronExpressionPmm = "0 30 0,3,6,9,12,18 ? * * ";
 	
 	//local
-	private static final String cronExpressionWms = "0 02 10 ? * 4 ";
-	private static final String cronExpressionPmm = "0 12 10 ? * 4 ";
+	//private static final String cronExpressionWms = "0 57 19 ? * 4 ";
+	//private static final String cronExpressionPmm = "0 49 15 ? * 4 ";
 
 
 	private static final String TIME_ZONE = "America/Lima";
@@ -139,7 +137,7 @@ public class ScheduledTasks {
 
 			logger.info(".::: insert idCD:::. " + listaCDxFH.get(i).getIdCD());
 
-			logger.info(".:::oracle  listaFH.get(j).getFechaHora() :::. " + listaCDxFH.get(i).getFechaHora());
+			logger.info(".:::oracle  listaFH.get(j).getNroCarga() :::. " + listaCDxFH.get(i).getNroCarga());
 		//	List<WmsCinsDto> listaTblWmsForm = this.wmsCinsService.findAllWMSWmsCins(listaCDxFH.get(i).getFechaHora());
 			List<WmsCinsDto> listaTblWmsForm = this.wmsCinsService.findAllxNroCargaWMSWmsCins(listaCDxFH.get(i).getNroCarga());
 			// TblPmm tblPmm = null;
