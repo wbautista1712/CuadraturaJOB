@@ -41,12 +41,12 @@ public class ScheduledTasks {
 	// Agregado por wilber
 
 	//produccion
-	private static final String cronExpressionWms = "0 30 0,3,6,9,12,18 ? * * ";
-	private static final String cronExpressionPmm = "0 30 0,3,6,9,12,18 ? * * ";
+	//private static final String cronExpressionWms = "0 30 0,3,6,9,12,18 ? * * ";
+	//private static final String cronExpressionPmm = "0 30 0,3,6,9,12,18 ? * * ";
 	
 	//local
-	//private static final String cronExpressionWms = "0 57 19 ? * 4 ";
-	//private static final String cronExpressionPmm = "0 49 15 ? * 4 ";
+	private static final String cronExpressionWms = "0 56 4 ? * 5 ";
+	private static final String cronExpressionPmm = "0 56 4 ? * 5 ";
 
 
 	private static final String TIME_ZONE = "America/Lima";

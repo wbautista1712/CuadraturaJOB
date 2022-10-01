@@ -50,6 +50,10 @@ public class TblPmm implements Serializable {
 	private Integer idTblPMM;
 	
 	@Basic(optional = false)
+	@Column(name = "audit_Number")
+	private Integer auditNumber;
+	
+	@Basic(optional = false)
 	@Column(name = "org_lvl_child")
 	private Integer orgLvlChild;
 	@Basic(optional = false)
