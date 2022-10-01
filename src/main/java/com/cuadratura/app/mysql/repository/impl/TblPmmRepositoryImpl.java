@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.cuadratura.app.mysql.entity.TblPmm;
 import com.cuadratura.app.mysql.repository.TblPmmRepositoryCustom;
 import com.cuadratura.app.oracle.entity.Fapinvbalee;
 
@@ -75,6 +76,54 @@ public class TblPmmRepositoryImpl implements TblPmmRepositoryCustom {
 
 		LOGGER.info("> insercion correcta " + insertCount);
 
+	}
+	
+	@Override
+	public void saveTblPmmJob(TblPmm obj, int idCargaPMM) throws SQLException {
+		String sql = "INSERT INTO cuadratura.tbl_pmm "
+				+ " ( org_lvl_child, prd_lvl_child, inv_type_code, trans_lote, on_hand_qty, on_hand_retl, on_hand_cost, "
+				+ " po_ord_qty, po_ord_retl, po_ord_cost, po_intrn_qty, po_intrn_retl, po_intrn_cost, to_ord_qty, to_ord_retl, "
+				+ " to_ord_cost, to_intrn_qty, to_intrn_retl, to_intrn_cost, first_pis_date, last_pis_date, ltd_qty, ltd_retl, "
+				+ " ltd_cost, last_chg_date, on_hand_weight, weight_uom, po_ord_weight, po_intrn_weight, to_ord_weight, to_intrn_weight, "
+				+ " ltd_weight, prd_sll_uom, curr_code, on_hand_eaches, first_shipped_date, first_sales_date, on_hand_cost_hm, on_hand_retl_hm, "
+				+ " to_intrn_cost_hm, to_intrn_retl_hm, trans_vcto_lote, idCarga_PMM, audit_number ) "
+
+				+ " VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, "
+				+ " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? , ?, ?, ?, ?) ";
+
+		int insertCount = jdbcTemplate.update(sql,
+
+				obj.getOrgLvlChild(), obj.getPrdLvlChild(),
+				obj.getInvTypeCode(), obj.getTransLote(),
+
+				obj.getOnHandQty(),
+				obj.getOnHandRetl(), obj.getOnHandCost(), obj.getPoOrdQty(), obj.getPoOrdRetl(), obj.getPoOrdCost(),
+
+				obj.getPoIntrnQty(), obj.getPoIntrnRetl(), obj.getPoIntrnCost(), obj.getToOrdQty(), obj.getToOrdRetl(),
+				obj.getToOrdCost(), obj.getToIntrnQty(), obj.getToIntrnRetl(), obj.getToIntrnCost(),
+
+				obj.getFirstPisDate(),
+				obj.getLastPisDate(),
+
+				obj.getLtdQty(), obj.getLtdRetl(), obj.getLtdCost(),
+				obj.getLastChgDate(),
+
+				obj.getOnHandWeight(),
+
+				obj.getWeightUom(), obj.getPoOrdWeight(), obj.getPoIntrnWeight(), obj.getToOrdWeight(),
+				obj.getToIntrnWeight(),
+
+				obj.getLtdWeight(), obj.getPrdSllUom(), obj.getCurrCode(), obj.getOnHandEaches(),
+				obj.getFirstShippedDate(),
+
+				obj.getFirstSalesDate(),
+				obj.getOnHandCostHm(), obj.getOnHandRetlHm(), obj.getToIntrnCostHm(), obj.getToIntrnRetlHm(),
+				obj.getTransVctoLote(),
+
+				idCargaPMM,
+				obj.getAuditNumber());
+
+		LOGGER.info("> insercion correcta saveTblPmmJob " + insertCount);
 	}
 
 	@Override

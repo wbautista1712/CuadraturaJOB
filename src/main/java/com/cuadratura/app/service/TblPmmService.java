@@ -4,8 +4,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.cuadratura.app.mysql.entity.TblPmm;
+import com.cuadratura.app.oracle.dto.TblHstFtFapinvbaleeDto;
 import com.cuadratura.app.oracle.entity.Fapinvbalee;
 
-public interface TblPmmService  extends GenericService<TblPmm, Integer> {
-	void saveTblPmm(List<Fapinvbalee> listaTblPmmForm, int idCargaPMM) throws SQLException ;
+public interface TblPmmService extends GenericService<TblPmm, Integer> {
+	void saveTblPmm(List<Fapinvbalee> listaTblPmmForm, int idCargaPMM) throws SQLException;
+
+	void saveTblPmmJob(List<TblHstFtFapinvbaleeDto> listaTblPmmForm, int idCargaPMM) throws SQLException;
 }
