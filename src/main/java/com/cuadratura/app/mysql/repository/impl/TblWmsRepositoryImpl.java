@@ -37,7 +37,7 @@ public class TblWmsRepositoryImpl implements TblWmsRepositoryCustom {
 		String sql = "INSERT INTO cuadratura.tbl_wms "
 				+ "(nro_carga, create_date, facility_code, company_code, item_alternate, item_part_a, item_part_b, "
 				+ "item_part_c, item_part_d, item_part_e, item_part_f, hierarchy1_code, hierarchy2_code, hierarchy3_code, "
-				+ "hierarchy4_code, hierarchy5_code, batch_nbr, pre_pack_code, tbl_wmscol, pre_pack_ratio, pre_pack_units,  "
+				+ "hierarchy4_code, hierarchy5_code, batch_nbr, pre_pack_code, pre_pack_ratio, pre_pack_units,  "
 				+ "oblpn_total, active_total, active_allocated, active_allocated_lockcode, active_available, active_lockcode,  "
 				+ "iblpn_total, iblpn_allocated, iblpn_allocated_lockcode, iblpn_available, iblpn_notverified, iblpn_lockcode,  "
 				+ "iblpn_lost, total_allocated, total_available, total_inventory, four_wall_inventory, open_order_qty, lock_code_1,  "
@@ -46,7 +46,7 @@ public class TblWmsRepositoryImpl implements TblWmsRepositoryCustom {
 				+ "lock_code_qty_9, lock_code_10, lock_code_qty_10, download_date1, error_code, observacion_error, flg_tipo, idCarga_WMS) "
 				+ "VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, "
 				+ " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, "
-				+ " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,  ?, ?, ?,?)";
+				+ " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,  ?, ?, ?)";
 
 		int insertCount = jdbcTemplate.update(sql,
 
@@ -59,7 +59,7 @@ public class TblWmsRepositoryImpl implements TblWmsRepositoryCustom {
 				obj.getHierarchy2Code(), obj.getHierarchy3Code(), obj.getHierarchy4Code(), obj.getHierarchy5Code(),
 				obj.getBatchNbr(),
 
-				obj.getPrePackCode(), obj.getTblWmscol(), obj.getPrePackRatio(), obj.getPrePackUnits(),
+				obj.getPrePackCode(),  obj.getPrePackRatio(), obj.getPrePackUnits(),
 				obj.getOblpnTotal(), obj.getActiveTotal(),
 
 				obj.getActiveAllocated(), obj.getActiveAllocatedLockcode(), obj.getActiveAvailable(),
@@ -166,7 +166,7 @@ public class TblWmsRepositoryImpl implements TblWmsRepositoryCustom {
 					// pre_pack_code, tbl_wmscol, pre_pack_ratio, pre_pack_units, oblpn_total,
 					// active_total,
 					statement.setString(18, obj.getPrePackCode());
-					statement.setString(19, obj.getTblWmscol());
+					//statement.setString(19, obj.getTblWmscol());
 					statement.setInt(20, obj.getPrePackRatio());
 					statement.setInt(21, obj.getPrePackUnits());
 					statement.setInt(22, obj.getOblpnTotal());
@@ -288,6 +288,17 @@ public class TblWmsRepositoryImpl implements TblWmsRepositoryCustom {
 				}
 			}
 		}
+	}
+	
+	public String nroCargaTblWmsByFoto() throws SQLException {
+
+        String sql = "SELECT GROUP_CONCAT(DISTINCT WMS.nro_carga SEPARATOR ',') AS nro_carga "
+        		+ " FROM cuadratura.tbl_wms WMS "
+        		+ " WHERE date_format(CONCAT(SUBSTR(WMS.CREATE_DATE,1,4),'-',SUBSTR(WMS.CREATE_DATE,5,2),'-',SUBSTR(WMS.CREATE_DATE,7,2)),'%Y-%m-%d')= CURDATE() ";
+
+//select CURDATE();
+
+        return jdbcTemplate.queryForObject(sql, String.class);
 	}
 
 }

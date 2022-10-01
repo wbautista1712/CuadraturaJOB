@@ -15,5 +15,5 @@ public interface WmsCinsRepository {
 	
 	List<Object[]> findAllxNroCargaWMSWmsCins(Integer nroCarga) throws Exception;
 	
-	public List<Object[]> getCDXNroCargaFotoWms();
+	public List<Object[]> getCDXNroCargaFotoWms(String nroCarga);
 }

@@ -73,13 +73,10 @@ public class CargaWms implements Serializable {
     
     @Column(name = "id_m_estadoCuadratura")
     private Integer idmestadoCuadratura;
-    /*
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCargaWMS")
-    private Collection<TblPmmWms> tblPmmWmsCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCargaWMS")
-    private Collection<TblWms> tblWmsCollection;
-*/
+
     @Column(name = "nombreArchivo")
     private String nombreArchivo;
     
+   /* @Column(name = "nro_carga")
+    private Integer nroCarga;*/
 }

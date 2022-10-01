@@ -46,7 +46,7 @@ public class ScheduledTasks {
 	//private static final String cronExpressionPmm = "0 30 0,3,6,9,12,18 ? * * ";
 	
 	//local
-	private static final String cronExpressionWms = "0 56 4 ? * 6 ";
+	private static final String cronExpressionWms = "0 39 11 ? * 6 ";
 	private static final String cronExpressionPmm = "0 50 9 ? * 6 ";
 
 
@@ -160,9 +160,11 @@ public class ScheduledTasks {
 	public void scheduleTaskWithCronExpression() throws Exception {
 
 		logger.info("Cron Task :: Execution Time - {}", dateTimeFormatter.format(LocalDateTime.now()));
-
+		
+		String codigosEstado = tblWmsService.nroCargaTblWmsByFoto();
+		logger.info("Cron Task :: codigosEstado Time - {}", codigosEstado);
 		//List<WmsCinsCDDto> listaCDxFH = wmsCinsService.getCDXFechaHoraFotoWms();
-		List<WmsCinsCDDto> listaCDxFH = wmsCinsService.getCDXNroCargaFotoWms();
+		List<WmsCinsCDDto> listaCDxFH = wmsCinsService.getCDXNroCargaFotoWms(codigosEstado);
 		logger.info(".:::oracle  tamaño lote listaCDxFH :::. " + listaCDxFH.size());
 
 		for (int i = 0; i < listaCDxFH.size(); i++) {
@@ -187,6 +189,7 @@ public class ScheduledTasks {
 			cargaWms.setIdmestadoCuadratura(Constantes.ESTADO_CUADRATURA);
 			cargaWms.setUsuarioCarga(Constantes.USUARIO_CARGA_AUTOMATICO);
 			cargaWms.setOrgNameShort(listaCDxFH.get(i).getIdCD()); // traer toda la datos de los CDS
+		//	cargaWms.setNroCarga(listaCDxFH.get(i).getNroCarga());
 			Integer id = this.cargaWmsService.saveCargaWms(cargaWms).intValue();
 			logger.info("id ==> " + id);
 			this.tblWmsService.saveTblWms(listaTblWmsForm,  id);

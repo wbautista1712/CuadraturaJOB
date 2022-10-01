@@ -62,7 +62,7 @@ public class TblWmsServiceImpl extends GenericServiceImpl<TblWms, Integer> imple
 			// pre_pack_code, tbl_wmscol, pre_pack_ratio, pre_pack_units, oblpn_total,
 			// active_total,
 			statement.setPrePackCode(obj.getPrePackCode()== null ? null: obj.getPrePackCode().trim());
-			statement.setTblWmscol(obj.getTblWmscol()== null ? null: obj.getTblWmscol().trim());
+			//statement.setTblWmscol(obj.getTblWmscol()== null ? null: obj.getTblWmscol().trim());
 			statement.setPrePackRatio(obj.getPrePackRatio());
 			statement.setPrePackUnits(obj.getPrePackUnits());
 			statement.setOblpnTotal(obj.getOblpnTotal());
@@ -150,5 +150,9 @@ public class TblWmsServiceImpl extends GenericServiceImpl<TblWms, Integer> imple
 	
 	public void uploadTblWms(TblWms tblWms) throws SQLException {
 		this.tblWmsRepository.uploadTblWms(tblWms);
+	}
+	
+	public String nroCargaTblWmsByFoto() throws SQLException {
+		return this.tblWmsRepository.nroCargaTblWmsByFoto();
 	}
 }

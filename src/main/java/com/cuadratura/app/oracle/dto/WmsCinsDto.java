@@ -128,7 +128,6 @@ public class WmsCinsDto {
 
 	private Integer flgTipo;
 	
-	private String  tblWmscol;
 
 	public WmsCinsDto() {
 	}
@@ -629,14 +628,6 @@ public class WmsCinsDto {
 		this.flgTipo = flgTipo;
 	}
 
-	public String getTblWmscol() {
-		return tblWmscol;
-	}
-
-	public void setTblWmscol(String tblWmscol) {
-		this.tblWmscol = tblWmscol;
-	}
-	
 	
 	
 }

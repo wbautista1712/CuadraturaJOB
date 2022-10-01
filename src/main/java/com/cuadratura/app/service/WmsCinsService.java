@@ -19,5 +19,5 @@ public interface WmsCinsService {
 	
 	List<WmsCinsDto> findAllxNroCargaWMSWmsCins(Integer nroCarga) throws Exception;
 	
-	public List<WmsCinsCDDto> getCDXNroCargaFotoWms();
+	public List<WmsCinsCDDto> getCDXNroCargaFotoWms(String nroCarga);
 }

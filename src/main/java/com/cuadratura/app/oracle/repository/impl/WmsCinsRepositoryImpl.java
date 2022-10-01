@@ -12,6 +12,7 @@ import org.hibernate.jpa.QueryHints;
 import org.springframework.stereotype.Repository;
 
 import com.cuadratura.app.oracle.repository.WmsCinsRepository;
+import com.cuadratura.app.util.Constantes;
 
 @Repository
 public class WmsCinsRepositoryImpl implements WmsCinsRepository {
@@ -126,12 +127,29 @@ public class WmsCinsRepositoryImpl implements WmsCinsRepository {
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<Object[]> getCDXNroCargaFotoWms() {
-		String sql = "             SELECT DISTINCT FACILITY_CODE idcd, nro_carga  FROM INTEGRACION.WMS_CINS "
-				+ "				WHERE FACILITY_CODE IN ('CD04', 'CD06', 'CD11', 'CD12', 'CD15')   AND "
-				+ "(SUBSTR(CREATE_DATE,1,4)||'-'||SUBSTR(CREATE_DATE,5,2)||'-'||SUBSTR(CREATE_DATE,7,2))= TO_CHAR(SYSDATE-3, 'YYYY-MM-DD') ORDER BY 1";
-
-		Query query = this.entityManager.createNativeQuery(sql);
+	public List<Object[]> getCDXNroCargaFotoWms(String nroCarga) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("             SELECT DISTINCT FACILITY_CODE idcd, nro_carga  FROM INTEGRACION.WMS_CINS  ");
+		sb.append("				WHERE FACILITY_CODE IN ('CD04', 'CD06', 'CD11', 'CD12', 'CD15')   AND  ");
+		sb.append(" (SUBSTR(CREATE_DATE,1,4)||'-'||SUBSTR(CREATE_DATE,5,2)||'-'||SUBSTR(CREATE_DATE,7,2))= TO_CHAR(SYSDATE, 'YYYY-MM-DD')  ");
+				
+		if(!nroCarga.equals(Constantes.VACIO)){
+			sb.append("AND nro_carga not IN (");
+			String cad[] = nroCarga.split(",");
+			for(int i=0; i< cad.length; i++){
+				if(i == 0)
+					sb.append("'"+cad[i]+"'");
+				else
+					sb.append(",'"+cad[i]+"'");
+			}
+			sb.append(") ");
+		}
+				
+//sb.append("  AND  nro_carga NOT IN (11833)  ");
+		sb.append(" ORDER BY 1  ");
+		LOGGER.info("sb.toString() " + sb.toString());
+		Query query = this.entityManager.createNativeQuery(sb.toString());
+		//query.setParameter("nroCarga", nroCarga);
 		query.setHint(QueryHints.HINT_CACHEABLE, true);
 		return query.getResultList();
 	}

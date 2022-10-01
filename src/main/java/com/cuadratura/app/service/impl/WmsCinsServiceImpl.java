@@ -320,8 +320,8 @@ public class WmsCinsServiceImpl implements WmsCinsService {
 	}
 	
 	@Override
-	public List<WmsCinsCDDto> getCDXNroCargaFotoWms() {
-		List<Object[]> listObject = wmsCinsRepository.getCDXNroCargaFotoWms();
+	public List<WmsCinsCDDto> getCDXNroCargaFotoWms(String nroCarga) {
+		List<Object[]> listObject = wmsCinsRepository.getCDXNroCargaFotoWms(nroCarga);
 		WmsCinsCDDto comboDTO;
 		List<WmsCinsCDDto> listReturn = new ArrayList<WmsCinsCDDto>();
 		for (Object[] row : listObject) {

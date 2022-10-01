@@ -13,4 +13,6 @@ public interface TblWmsRepositoryCustom {
 	public void saveTblWmsBatch(List<WmsCinsDto> listaTblPmmForm, int numeroLotes, int idCargaWMS) throws SQLException;
 	
 	public void uploadTblWms(TblWms tblWms) throws SQLException;
+	
+	public String nroCargaTblWmsByFoto() throws SQLException;
 }

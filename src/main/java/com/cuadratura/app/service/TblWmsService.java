@@ -11,4 +11,6 @@ public interface TblWmsService  extends GenericService<TblWms, Integer> {
 	void saveTblWms(List<WmsCinsDto> listaTblPmmForm, int idCargaWMS) throws SQLException ;
 	
 	public void uploadTblWms(TblWms tblWms) throws SQLException;
+	
+	public String nroCargaTblWmsByFoto() throws SQLException ;
 }
