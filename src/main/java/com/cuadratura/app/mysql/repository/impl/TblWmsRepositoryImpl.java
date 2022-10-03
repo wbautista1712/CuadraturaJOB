@@ -293,8 +293,7 @@ public class TblWmsRepositoryImpl implements TblWmsRepositoryCustom {
 	public String nroCargaTblWmsByFoto() throws SQLException {
 
         String sql = "SELECT GROUP_CONCAT(DISTINCT WMS.nro_carga SEPARATOR ',') AS nro_carga "
-        		+ " FROM cuadratura.tbl_wms WMS "
-        		+ " WHERE date_format(CONCAT(SUBSTR(WMS.CREATE_DATE,1,4),'-',SUBSTR(WMS.CREATE_DATE,5,2),'-',SUBSTR(WMS.CREATE_DATE,7,2)),'%Y-%m-%d')= CURDATE() ";
+        		+ " FROM cuadratura.tbl_wms WMS ";
 
 //select CURDATE();
 

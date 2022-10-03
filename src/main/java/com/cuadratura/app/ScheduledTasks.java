@@ -43,11 +43,11 @@ public class ScheduledTasks {
 
 	//produccion
 	//private static final String cronExpressionWms = "0 30 0,3,6,9,12,18 ? * * ";
-	//private static final String cronExpressionPmm = "0 30 0,3,6,9,12,18 ? * * ";
+	//private static final String cronExpressionPmm = "0 40 0,3,6,9,12,18 ? * * ";
 	
 	//local
-	private static final String cronExpressionWms = "0 39 11 ? * 6 ";
-	private static final String cronExpressionPmm = "0 50 9 ? * 6 ";
+	private static final String cronExpressionWms = "0 30 11 ? * 0 ";
+	private static final String cronExpressionPmm = "0 13 17 ? * 0 ";
 
 
 	private static final String TIME_ZONE = "America/Lima";
@@ -134,6 +134,7 @@ public class ScheduledTasks {
 			logger.info(".::: obj.getLoteFotoPmm() :::. " + lista.size());
 			logger.info(".::: insert getOrgLvlChild:::. " + lista.get(i).getOrgLvlChild());
 			logger.info(".::: insert getIdStateCharge:::. " + lista.get(i).getIdStateCharge());
+			
 			List<TblHstFtFapinvbaleeDto> listaTblPmmForm = this.tblHstFtFapinvbaleeService.listTblHstFtFapinvbalee(lista.get(i).getIdStateCharge().intValue());
 		
 			logger.info(".::: oracle tamaño de importacion :::. " + listaTblPmmForm.size());
@@ -162,12 +163,14 @@ public class ScheduledTasks {
 		logger.info("Cron Task :: Execution Time - {}", dateTimeFormatter.format(LocalDateTime.now()));
 		
 		String codigosEstado = tblWmsService.nroCargaTblWmsByFoto();
+		
 		logger.info("Cron Task :: codigosEstado Time - {}", codigosEstado);
 		//List<WmsCinsCDDto> listaCDxFH = wmsCinsService.getCDXFechaHoraFotoWms();
 		List<WmsCinsCDDto> listaCDxFH = wmsCinsService.getCDXNroCargaFotoWms(codigosEstado);
 		logger.info(".:::oracle  tamaño lote listaCDxFH :::. " + listaCDxFH.size());
 
-		for (int i = 0; i < listaCDxFH.size(); i++) {
+		for (int i = 0; i < listaCDxFH.size(); i++) 
+		{
 			logger.info(".::: obj.getLoteFotoPmm() :::. " + listaCDxFH.size());
 
 			logger.info(".::: insert idCD:::. " + listaCDxFH.get(i).getIdCD());
